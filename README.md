@@ -63,6 +63,16 @@ descriptions = [
 ]
 ```
 
+## Performance
+1. Uses FastAPI for low latency and asynchronous request handling, making it suitable for high-performance IO-bound and high-concurrency systems
+2. Using word streaming back to use to make it feel modern
+3. All indexes are loaded into memory once on script execution to optimize data retrieval. If an index somehow gets dropped it will automatically pick it up again.
+4. Used FAISS. Facebooks massively scaleable opensource vector store.
+5. Used Langchain where possible. Some of langchain is slow.
+6. Only chunks files when over the token limit
+7. Implement my own chunking for faster retrieval
+8. Uses Redis for Session Management
+
 ## Getting Around Token Limitations 
 I've written code to tokenize large text inputs, chunk and batch them then combine them if needed. I have not used Langchain but this way is more responsive however it uses an MapReduce pattern.
 
