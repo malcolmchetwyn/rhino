@@ -50,13 +50,31 @@ source .venv/bin/activate
 pip install --no-cache-dir -r requirements.txt
 ```
 
-## Configs & Info
+## Data Indexes
+You will require data to be indexes if you want to search locally and with OpenAI. In each file starting with Vector.. you will file code such as the below. Add/Update/Remove the indexes here. Example:
+```sh
+"""Perform all index searches concurrently."""
+descriptions = [   
+    #"data_indexes/public_news_and_events_index", 
+    "data_indexes/annual_reports"
+    #"data_indexes/federal_legislativeinstruments_inforce_index",
+    #"data_indexes/gov_compliance_law",
+    #"data_indexes/salesforce_customer_stories"
+]
+```
+
+## Getting Around Token Limitations 
+I've written code to tokenize large text inputs, chunk and batch them then combine them if needed. I have not used Langchain but this way is more responsive however it uses an MapReduce pattern.
+
+
+## Other Info
 1. You will need to create your own data indexes to plugin. Ping me directly if you want some examples. I have included a file called "train your data" so you can train you own data. It will process .txt, pdf etc. just put the files in the directory and let is chunk it then either create, merge or delete your DB
-2. You will need to add your own OpenAI Key in the .env file
-3. I have created a gmail with username and password you can use
+2. You will need to add your own OpanAI Key in the .env file
+3. I have created a gmail with user name and password you can use
 4. If hosted on a domain, you will need to change the forgot password link to your hosted domain
-5. Credentials, all passwords are stored in a file but encrypted (didn't need a DB for this project)
-6. Vector Store: it used FAISS. It's facebooks massively scalable open source vector store.
+5. Credenitals, all passwords are stored in a file but encrypted (didn't need a DB for this project)
+6. Vector Store: it used FAISS. It's facebooks massively scaleable opensource vector store.
+
 
 
 ## Common Mistakes to look out for
