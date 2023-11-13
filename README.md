@@ -92,5 +92,3 @@ I've written code to tokenize large text inputs, chunk and batch them then combi
 
 1. Do not install any other lib's other than what's in requirements.txt file. OpenAI is always changing their API's so this version works.
 
-## Created By
-Malcolm Fitzgerald
