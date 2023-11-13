@@ -78,14 +78,16 @@ descriptions = [
 ## Getting Around Token Limitations 
 I've written code to tokenize large text inputs, chunk and batch them then combine them if needed. I have not used Langchain but this way is more responsive however it uses an MapReduce pattern.
 
+## Credentials
+Credentials.txt is where all user names and passwords are stored. The passwords are all encrypted. I used a file for the proect becasue I didn't need a DB at this point however you can swap it out for DB is you like
+
 
 ## Other Info
 1. You will need to create your own data indexes to plugin. Ping me directly if you want some examples. I have included a file called "train your data" so you can train you own data. It will process .txt, pdf etc. just put the files in the directory and let is chunk it then either create, merge or delete your DB
 2. You will need to add your own OpanAI Key in the .env file
 3. I have created a gmail with user name and password you can use
 4. If hosted on a domain, you will need to change the forgot password link to your hosted domain
-5. Credenitals, all passwords are stored in a file but encrypted (didn't need a DB for this project)
-6. Vector Store: it used FAISS. It's facebooks massively scaleable opensource vector store.
+5. Vector Store: it used FAISS. It's facebooks massively scaleable opensource vector store.
 
 
 
