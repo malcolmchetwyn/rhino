@@ -72,6 +72,7 @@ descriptions = [
 6. Only chunks files when over the token limit
 7. Implement my own chunking for faster retrieval
 8. Uses Redis for Session Management
+9. Uvicorn is an ASGI web server. It's known for its speed and efficiency, often used in conjunction with FastAPI and other ASGI frameworks.
 
 ## Getting Around Token Limitations 
 I've written code to tokenize large text inputs, chunk and batch them then combine them if needed. I have not used Langchain but this way is more responsive however it uses an MapReduce pattern.
