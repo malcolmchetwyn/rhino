@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Rhino</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="styles/bootstrap.min.css" rel="stylesheet">
+  <link href="styles/bootstrap-icons.css" rel="stylesheet">
+  <link href="styles/all.min.css" rel="stylesheet">
+  <link href="styles/swiper-bundle.min.css" rel="stylesheet">
+  <link href="styles/main.css" rel="stylesheet">
+  <link href="/styles_v2.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/tokyo-night-dark.min.css">
+  
+  <style>
+    #message::placeholder {
+        /* Make sure to set the font family and size to match your design */
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+    }
+    .video-responsive{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.video-responsive iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
+
+@media (max-width: 768px) {  /* You can adjust the 768px breakpoint if needed */
+    #faqlist .accordion-item {
+        width: 100%;
+        box-sizing: border-box;  /* ensures padding and border are included in the width */
+    }
+    .col-lg-10 {
+        padding: 0; /* This reduces any padding that might be causing width constraints */
+        width: 100%;
+    }
+}
+
+video.img-fluid {
+    height: auto;
+    flex: 1;
+}
+@media (min-width: 1280px) {
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+.fa-file-arrow-up {
+    font-weight: 900;
+    color: #333;
+}
+
+.textarea-wrapper {
+    position: relative;
+    width: 100%; /* Make sure the wrapper takes the full width */
+}
+
+.file-upload-label {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 0; /* Align to the left */
+  transform: translateY(-50%); /* Shift it up by half its height */
+  pointer-events: auto; /* Make sure the label is clickable */
+  font-size: 24px; 
+}
+
+
+.file-upload-input {
+    display: none;
+}
+
+.input {
+    width: 100%; /* Making the textarea full width */
+    box-sizing: border-box; /* To ensure padding doesn't affect width */
+    padding-left: 30px; /* Creates space for the paperclip inside the textarea */
+    padding-right: 10px; /* Optional padding on the right for aesthetics */
+    height: 60px;
+}
+
+#file-name-display {
+    display: block;
+    margin-top: 5px;
+
+    color: white;
+}
+
+#user-input {
+    padding-left: 40px; /* You might need to adjust this based on your styles and desired spacing */
+    border: 0px;
+}
+
+#file-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+#clearBtn {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+.prompt-templates .prompt-item {
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+  background: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.prompt-templates .prompt-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.prompt-templates .prompt-description {
+  max-height: 4.5em;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.prompt-templates .see-more {
+  cursor: pointer;
+  color: #007bff;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+.prompt-templates .see-more:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    color: #333;
+    /* margin-bottom: 15px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-text {
+    color: #666;
+    margin-bottom: 15px;
+    max-height: 0em;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .card-button {
+    background: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 1px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-button:hover {
+    background: #0056b3;
+  }
+  
+  .card-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  }
+  
+  .copy-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+    font-size: 1em;
+    padding: 0;
+  }
+
+  .blue-circle {
+    background-color: #007bff; /* Blue background */
+    color: white;             /* White text color */
+    border-radius: 50%;       /* Makes it round */
+    width: 30px;              /* Circle size */
+    height: 30px;             /* Circle size */
+    display: flex;
+    align-items: center;      /* Centers content vertically */
+    justify-content: center;  /* Centers content horizontally */
+    font-weight: bold;        /* Optional: makes the number bold */
+  }
+
+
+  .title-underline {
+  width: 30%;          /* Set the width to 30% of its container */
+  border: none;        /* Removes the default border */
+  height: 2px;         /* Sets the height of the line */
+  background-color: #000; /* Sets the color of the line, change as needed */
+  margin-bottom: 10px; /* Adds some space below the line */
+  margin-left: 0;      /* Aligns the line to the left of the container */
+}
+
+
+
+.featured-services .service-item .title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--color-secondary);
+    transition: 0.3s;
+}
+
+.mid_page_headings{
+    color: #032d60;
+    font-family: var(--pbc-g-font-display);
+    font-size: 36px;
+    letter-spacing: -.012em;
+    line-height: 64px;
+}
+
+.pricing ul {
+    padding: 5px 10px 10px 10px;
+    list-style: none;
+    color: #6c757d;
+    text-align: left;
+    line-height: 20px;
+}
+
+/* Add this to your CSS file */
+.large-file-warning {
+  color: #ff0000; /* This sets the color to red, change the hex code to whatever color you prefer */
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">        
+        <img src = "/img/new_logo.svg" style="transform: scale(2.0);padding-left: 30px;" />
+
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    
+      {% include 'header_menu.html' %}
+      
+    </div>
+  </header>
+
+
+  <section id="hero" class="hero d-flex align-items-center" style="padding: 80px 0 200px 0;">
+ 
+      <div class="chat-container" >
+        <div class="chat-wrapper">
+            <div id="chat-messages" class="chat-box"></div>
+            <form id="chat-form" class="input-form" enctype="multipart/form-data">
+                <div class="textarea-wrapper">
+                    <label for="file-upload" class="file-upload-label">
+                      <i class="fa-solid fa-file-arrow-up"></i>
+                        <input type="file" id="file-upload" class="file-upload-input">
+                    </label>
+                    <textarea
+                        type="text"
+                        class="input"
+                        id="user-input"
+                        name="user_input"
+                        placeholder="Ask your question..."></textarea>
+                </div>
+                <button class="button" type="submit" id="submitBtn" style="margin-bottom: 2px;margin-top: -1px;">Send</button>
+            </form>
+            <div id="file-control">
+              <span id="file-name-display" style="display: inline-block; flex-grow: 1;"></span>
+              <button type="button" id="clearBtn" aria-label="Close" class="hidden">
+                  <i class="fa-solid fa-rectangle-xmark"></i>
+              </button>        
+          </div>
+        
+            <span id="disclaimer_sarch_text">Rhino can make mistakes. Verify important information.</span>
+        </div>
+
+ 
+</div>
+</section><!-- End Hero Section -->
+
+
+
+
+
+<main id="main">
+
+
+
+
+  <section id="prompt-templates" class="prompt-templates">
+    <div class="container">
+
+      <h4 class="mid_page_headings">Annual Report Prompt Templates</h4><span>View prompts and/or click to copy and paste in prompt text box. Replace [INSERT COMPANY NAME]  with your company name</span>
+      <div class="row gy-4">
+        <!-- Card 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Full Financial Performance</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. From [INSERT COMPANY NAME]'s Annual report. Provide facts, metrics and figures to Total revenue and revenue by segment or product line, Year-over-year growth rates, Year-over-year growth rates, Net income and profit margins, Earnings before interest, taxes, depreciation, and amortization (EBITDA), Customer acquisition costs (CAC),Customer retention rates or churn rates,Lifetime value of a customer (LTV), Number of active customers or accounts,Operating expenses as a percentage of revenue,Cost savings initiatives and their outcomes,Inventory turnover rates,Return on assets (ROA) and return on equity (ROE),Capital expenditures (CAPEX),Divestitures or asset sales, investment in technology or infrastructure,Cash flow statements, including operating, investing, and financing cash flows,Current ratio and quick ratio to assess liquidity,Debt-to-equity ratio and coverage ratios.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Revenue and Profitability</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Provide total revenue, revenue by segment, year-over-year growth rates, net income, and profit margins from the latest [INSERT COMPANY NAME] annual report to identify top-performing segments and potential areas for expansion or upselling opportunities.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Financial Health and Ratios</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. Summarize the key financial performance trends for [INSERT COMPANY NAME] annual report includes revenue, net income, and cash flow with metrics, facts, and figures.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Operational Efficiency</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. Analyze and provide operating expenses, cost savings initiatives, inventory turnover, and ROA/ROE figures from [INSERT COMPANY NAME] Annual Report to advise on solutions that could streamline operations, reduce costs, or improve asset utilization. Ensure you include facts and figures.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row gy-4">
+        <!-- Card 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Market Position Assessment</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. Review and Provide market share information, competitive threats, and strategic partnership details in the [INSERT COMPANY NAME] annual report to tailor a competitive positioning strategy for our offerings, emphasizing how they provide a competitive edge.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Capital and Investment</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. Assess and provide [INSERT COMPANY NAME] CAPEX, divestitures, and technology investments to propose solutions that align with the company's growth plans and capital allocation strategies based on their annual report.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Customer Metrics Synthesis</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. Gather data in the [INSERT COMPANY NAME] annual report on customer acquisition costs, retention rates, lifetime value, and active customer counts to create targeted sales strategies that address customer lifecycle management and pinpoint areas where our solutions can enhance value.</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-title">
+              <h6>Sustainability Responsibility</h6>
+              <button class="copy-button" onclick="copyText(this)" title="Copy Text">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <p class="card-text">Pretend you are a finance expert skilled in summarising Annual reports for CFO's, CEO's, Investment Boards and Executives. These people rely on you for accurate and insightful information. Analyze and review [INSERT COMPANY NAME] efforts in sustainability and corporate social responsibility as reported in their annual report. What initiatives have been taken, and how do they align with the company's core values and the expectations of stakeholders?</p>
+            <button class="card-button" aria-expanded="false" onclick="toggleText(this)">See Prompt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ======= Featured Services Section ======= -->
+<section id="featured-services" class="featured-services" style="padding: 40px 0;">
+<div class="container">
+  <div style="padding-bottom: 30px;"> 
+    <h4 class="mid_page_headings">RFI/RFP Question Responses</h4>
+    </div>
+
+  <div class="row gy-4">
+    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
+      <div class="icon flex-shrink-0"><div class="blue-circle">1</div></div>
+      <div>
+        <h4 class="title">RFI/RFP Questions</h4>
+        <hr class="title-underline"> <!-- Add this line -->
+
+        <p class="description">Simply copy one question at a time from the document or spreadsheet into the prompt input box.</p>
+      </div>
+    </div>
+    <!-- End Service Item -->
+
+    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+      <div class="icon flex-shrink-0"><div class="blue-circle">2</div></div>
+      <div>
+        <h4 class="title">RFI/RFP Prompt Prefix & Suffix</h4>
+        <hr class="title-underline"> <!-- Add this line -->
+        <p class="description" style="color:#0f57dc;"><strong>Add this to the start of the question.</strong></p>
+        <p class="description">Pretend you are a Salesforce expert and have to respond to request for proposal (RFP) questions. Explain How Salesforce can</p>
+        <p class="description" style="color:#0f57dc;"><strong>Optionally add this to the end to include specific products.</strong></p>
+        <p class="description">Ensure to include Data Cloud and AI</p>
+        
+
+      </div>
+    </div><!-- End Service Item -->
+
+    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+      <div class="icon flex-shrink-0"><div class="blue-circle">3</div></div>
+      <div>
+        <h4 class="title">Full Prompt Example</h4>
+        <hr class="title-underline"> <!-- Add this line -->
+        <p class="description"><strong>Pretend you are a Salesforce expert and have to respond to request for proposal (RFP) questions. Explain How Salesforce can</strong> Routes conversations to Member Service when meeting different triggers. Enables more advanced functionalities such as agent dashboard integration and returning conversations to a bot. Leverages specific back-end integrations and pre-built dialogue flows. <strong>Ensure to include Data Cloud and AI</strong></p>
+      </div>
+    </div><!-- End Service Item -->
+  </div>
+</div>
+</section><!-- End Featured Services Section -->
+
+
+
+
+  <!-- ======= Featured Services Section ======= -->
+  <section id="document-chat" class="featured-services" style="padding: 40px 0;">
+    <div class="container">
+      <div style="padding-bottom: 30px;"> 
+        <h4 class="mid_page_headings">Chat To Your Documents</h4>
+        </div>
+    
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
+          <div class="icon flex-shrink-0"><div class="blue-circle">1</div></div>
+          <div>
+            <h4 class="title">Find & Upload Your Document</h4>
+            <hr class="title-underline"> <!-- Add this line -->
+    
+            <p class="description">Click the upload button in the prompt input box and select your file. Currently support for .txt, .pdf. docx</p>
+          </div>
+        </div>
+        <!-- End Service Item -->
+    
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon flex-shrink-0"><div class="blue-circle">2</div></div>
+          <div>
+            <h4 class="title">Enter Your Question</h4>
+            <hr class="title-underline"> <!-- Add this line -->
+            <p class="description">If you upload a document. It will directly interact with the foundation model. </p>
+            <p class="description">Small documents are generally quick. Large documents can take up to 50 seconds or more to complete due to foundational models having small context windows. This will improve overtime. </p>  
+    
+          </div>
+        </div><!-- End Service Item -->
+    
+        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon flex-shrink-0"><div class="blue-circle">3</div></div>
+          <div>
+            <h4 class="title">How to remove the document?</h4>
+            <hr class="title-underline"> <!-- Add this line -->
+            <p class="description">Click the red cross to remove your document.</p>
+            <p class="description">If you no longer want you document part of your seach, remove your document.</p>
+          </div>
+        </div><!-- End Service Item -->
+      </div>
+    </div>
+    </section><!-- End Featured Services Section -->
+    
+    
+
+
+
+
+
+
+
+
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing" style="padding: 40px 0;">
+
+      <div class="container" data-aos="fade-up">
+  <div style="padding-bottom: 30px;"> 
+    <h4 class="mid_page_headings" style="color: #032d60;font-family: var(--pbc-g-font-display);font-size: 36px;letter-spacing: -.012em;line-height: 64px;">Training Data Set</h4>
+    </div>
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Current</h3>
+              <ul>
+                <li><i class="bi bi-check"></i>Majority of Help & Developer Guides</li>
+                <li><i class="bi bi-check"></i>FINS Customers Stories</li>
+                <li><i class="bi bi-check"></i>FINS First Call Decks</li>
+                <li><i class="bi bi-check"></i>Public News & Events</li>
+                <li><i class="bi bi-check"></i>Upload your documents and talk to them. Supports .txt, .pdf, docx</li>
+                <li><i class="bi bi-check"></i>Initial Set Of Annual Reports</li>
+                <li class=""><span>Qantas, ANZ, NAB, Seek, Wesfarmers, CBA, AGL, Bendigo  Bank, Tyro, Bupa, Coles, Insignia Financial, Macquarie, Myer, NRMA, QBE, RACV, Singtel, Suncorp, Telstra, TPG, Virgin, Vodafone, Westpac, Woolies</span></li>                
+              </ul>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing-item featured">
+              <h3>In Progress</h3>
+              <ul>
+                <li><i class="bi bi-check"></i>Account Plan Copilot</li>
+                <li><i class="bi bi-check"></i>Complete FINS Customers Stories & Data</li>
+                <li><i class="bi bi-check"></i>Start Next Industry</li>
+                <li><i class="bi bi-check"></i>Financial Industry Compliance & Regulation</li>
+                <li><i class="bi bi-check"></i>Broader Set Of Annual Reports</li>
+                <li><i class="bi bi-check"></i>Open for request. Contact Me.</li>
+              </ul>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="pricing-item">
+              <h3>Future</h3>
+              <ul>
+                <li><i class="bi bi-check"></i>TBD</li>
+              </ul>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+
+
+
+
+</main><!-- End #main -->
+
+{% include 'footer.html' %}
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<!--
+<div id="preloader"></div>
+-->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/purecounter_vanilla.js"></script>
+<script src="js/glightbox.min.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/aos.js"></script> 
+<script src="js/main.js"></script>
+<script src="js/marked.min.js"></script>
+<script src="https://kit.fontawesome.com/45b02cff02.js" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script defer src="/interface.js"></script>
+<script defer src="/chat.js"></script>
+
+</body>
+
+</html>

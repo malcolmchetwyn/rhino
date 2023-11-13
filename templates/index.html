@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="/img//favicon.ico" type="image/x-icon" />
+  
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error { color: red; }
+        .container { max-width: 1000px; }
+        .form-group { margin-bottom: 15px; }
+        .btn { width: 100%; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <h2> <img src="/img/sf_rhino.svg" alt="SF Rhino"> SF Rhino Login</h2>
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label for="login_email">Email:</label>
+                        <input type="email" class="form-control" id="login_email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password">Password:</label>
+                        <input type="password" class="form-control" id="login_password" name="password" required>
+                    </div>
+                    <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
+                    {% if login_error %}
+                    <p class="error">{{ login_error }}</p>
+                    {% endif %}
+                </form>
+
+                <h2>Get Started with your Salesforce Email</h2>
+                <form action="/signup" method="post">
+                    <div class="form-group">
+                        <label for="signup_email">Enter your @salesforce.com email <br>Verify email. Create Password. Use App</label>
+                        <input type="email" class="form-control" id="signup_email" name="email" required>
+                    </div>
+                    <button type="submit" id="signupBtn" class="btn btn-success">Signup</button>
+                    {% if signup_error %}
+                    <p class="error">{{ signup_error }}</p>
+                    {% endif %}
+                </form>
+
+                <a href="/reset-password-request">Forgot Password?</a>
+                <p id="mf_cred" style="text-align: center;padding-top:15px;font-size:10px;">Created by malcolm.fitzgerald@salesforce.com</p>
+            </div>
+        </div>
+    </div>
+
+
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const loginForm = loginBtn.closest('form');
+        const signupForm = signupBtn.closest('form');
+        
+        // Array of funny loading messages
+        const funnyLoadingMessages = [
+            '🔮 Predicting future...',
+            '🎲 Rolling dice...',
+            '🌌 Traveling through space...',
+            '🎩 Pulling a rabbit...',
+            '🦄 Spotting unicorns...',
+            '🕵️‍♂️ Spying on neighbors...',
+            '🐢 Racing a tortoise...'
+        ];
+
+        // Function to disable both buttons
+        function disableButtons() {
+            loginBtn.disabled = true;
+            signupBtn.disabled = true;
+            // Randomly pick a funny loading message
+            const randomMessage = funnyLoadingMessages[Math.floor(Math.random() * funnyLoadingMessages.length)];
+            signupBtn.textContent = randomMessage;
+        }
+
+        // Function to enable both buttons
+        function enableButtons() {
+            loginBtn.disabled = false;
+            signupBtn.disabled = false;
+            signupBtn.textContent = 'Signup'
+        }
+
+        // On login form submit
+        loginForm.addEventListener('submit', function(event) {
+            disableButtons();
+        });
+
+        // On signup form submit
+        signupForm.addEventListener('submit', function(event) {
+            disableButtons();
+        });
+
+        // Check for errors on page load, and enable buttons if found
+        const errors = document.querySelectorAll('.error');
+        errors.forEach(error => {
+            if (error.textContent.trim() !== '') {
+                enableButtons();
+            }
+        });
+    });
+</script>
+
+    
+
+    
+    <!-- Include Bootstrap JS and its dependencies below, if you plan to use any Bootstrap JS components -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
